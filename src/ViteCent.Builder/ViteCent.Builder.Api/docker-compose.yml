@@ -1,6 +1,0 @@
-services:
-  vitecent.Builder.api:
-    image: ${DOCKER_REGISTRY-}vitecentBuilderservice:1.0.0
-    build:
-      context: .
-      dockerfile: Dockerfile
