@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<DocumentationFile></DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\ViteCent.Data\ViteCent.Builder.Data\ViteCent.Builder.Data.csproj" />
+		<ProjectReference Include="..\ViteCent.Builder.Domain\ViteCent.Builder.Domain.csproj" />
+		<ProjectReference Include="..\ViteCent.Builder.Entity\ViteCent.Builder.Entity.csproj" />
+	</ItemGroup>
+
+</Project>

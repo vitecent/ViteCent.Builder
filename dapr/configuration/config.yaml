@@ -1,0 +1,10 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: ViteCent-config
+  namespace: ViteCent
+spec:
+  tracing:
+    samplingRate: "1"
+    zipkin:
+      endpointAddress: http://192.168.0.53:9411/api/v2/spans

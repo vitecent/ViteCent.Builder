@@ -1,0 +1,13 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: ViteCent-pubsub
+  namespace: ViteCent
+spec:
+  type: pubsub.redis
+  version: v1
+  metadata:
+  - name: redisHost
+    value: 192.168.0.53:6379
+  - name: redisPassword
+    value: "123456"
