@@ -1,0 +1,32 @@
+﻿#region
+
+using MediatR;
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+using $!{DataBase.Name}.$!{Setting.EntityName};
+using ViteCent.Core.Orm.SqlSugar;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.DomainName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.PageName}$!{Table.CamelCaseName}
+/// </summary>
+public class $!{Setting.PageName}$!{Table.CamelCaseName} : BaseDomain<$!{Table.CamelCaseName}$!{Setting.EntityName}>, IRequestHandler<$!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}, List<$!{Table.CamelCaseName}$!{Setting.EntityName}>>
+{
+    /// <summary>
+    ///     DataBaseName
+    /// </summary>
+    public override string DataBaseName => "$!{DataBase.Name}";
+
+    /// <summary>
+    ///     Handle
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<List<$!{Table.CamelCaseName}$!{Setting.EntityName}>> Handle($!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix} request, CancellationToken cancellationToken)
+    {
+        return await base.$!{Setting.PageName}Async(request);
+    }
+}

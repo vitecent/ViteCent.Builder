@@ -1,0 +1,31 @@
+﻿#region
+
+using MediatR;
+using SqlSugar;
+using ViteCent.Core.Data;
+using ViteCent.Core.Orm.SqlSugar;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.EntityName};
+
+/// <summary>
+///     $!{Table.CamelCaseName}$!{Setting.EntityName}.
+/// </summary>
+[Serializable]
+[SugarTable("$!{Table.Name}")]
+public class $!{Table.CamelCaseName}$!{Setting.EntityName} : $!{BaseName}, IRequest<Base$!{Setting.DataResultSuffix}>
+{
+#set($Index = 0)
+#foreach($Field in $Fields)
+    /// <summary>
+    ///     $!{Field.Description}
+    /// </summary>
+    [SugarColumn(ColumnName = "$!{Field.Name}"$!{Field.ColumnNullable}$!{Field.ColumnType}$!{Field.ColumnLength}$!{Field.ColumnDescription}$!{Field.ColumnIdentity}$!{Field.ColumnPrimaryKey})]
+    public $!{Field.DataType} $!{Field.CamelCaseName} { get; set; }$!{Field.Default}
+#set($Index = $Index + 1)
+#if($Index < $Fields.Count)
+
+#end
+#end
+}

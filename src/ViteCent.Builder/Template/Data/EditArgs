@@ -1,0 +1,12 @@
+﻿namespace $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.EditName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}
+/// </summary>
+public class $!{Setting.EditName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} : $!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}
+{
+    /// <summary>
+    ///     标识
+    /// </summary>
+    public string Id { get; set; } = string.Empty;
+}

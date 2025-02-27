@@ -1,0 +1,27 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+using ViteCent.Core.Data;
+using ViteCent.Core.Web.Api;
+
+namespace $!{DataBase.Name}.$!{Setting.ApiName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.AddName}$!{Table.CamelCaseName}
+/// </summary>
+[ApiController]
+[Route("$!{Table.CamelCaseName}")]
+public class $!{Setting.AddName}$!{Table.CamelCaseName}(IMediator mediator) : BaseApi<$!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, Base$!{Setting.DataResultSuffix}>
+{
+    /// <summary>
+    ///     $!{Setting.AddName}
+    /// </summary>
+    /// <param name="args"></param>
+    /// <returns></returns>
+    [HttpPost]
+    [Route("$!{Setting.AddName}")]
+    public override async Task<Base$!{Setting.DataResultSuffix}> InvokeAsync($!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} args)
+    {
+        return await mediator.Send(args);
+    }
+}

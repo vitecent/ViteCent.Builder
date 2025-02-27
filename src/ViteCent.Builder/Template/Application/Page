@@ -1,0 +1,57 @@
+﻿#region
+
+using AutoMapper;
+using MediatR;
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.ApplicationName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.PageName}$!{Table.CamelCaseName}
+/// </summary>
+public class $!{Setting.PageName}$!{Table.CamelCaseName} : IRequestHandler<$!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Setting.PageName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>>
+{
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMapper _mapper;
+
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMediator _mediator;
+
+    /// <summary>
+    ///     $!{Setting.PageName}$!{Table.CamelCaseName}
+    /// </summary>
+    public $!{Setting.PageName}$!{Table.CamelCaseName}()
+    {
+        var context = BaseHttpContext.Context;
+
+        _mediator = context.RequestServices.$!{Setting.GetName}Service(typeof(IMediator)) as IMediator ?? default!;
+        _mapper = context.RequestServices.$!{Setting.GetName}Service(typeof(IMapper)) as IMapper ?? default!;
+    }
+
+    /// <summary>
+    ///     Handle
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<$!{Setting.PageName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>> Handle($!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} request,
+        CancellationToken cancellationToken)
+    {
+        var args = _mapper.Map<$!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>(request);
+
+        var list = await _mediator.Send(args);
+
+        var rows = _mapper.Map<List<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>>(list);
+
+        var result = new $!{Setting.PageName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>(args.Offset, args.Limit, args.Total, rows);
+
+        return result;
+    }
+}

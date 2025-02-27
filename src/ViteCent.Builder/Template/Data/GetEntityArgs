@@ -1,0 +1,18 @@
+﻿#region
+
+using MediatR;
+using $!{DataBase.Name}.$!{Setting.EntityName};
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+
+/// <summary>
+/// </summary>
+public class $!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix} : IRequest<$!{Table.CamelCaseName}$!{Setting.EntityName}>
+{
+    /// <summary>
+    ///     标识
+    /// </summary>
+    public string Id { get; set; } = string.Empty;
+}

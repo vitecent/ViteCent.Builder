@@ -1,0 +1,55 @@
+﻿#region
+
+using AutoMapper;
+using MediatR;
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.ApplicationName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.GetName}$!{Table.CamelCaseName}
+/// </summary>
+public class $!{Setting.GetName}$!{Table.CamelCaseName} : IRequestHandler<$!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Setting.DataName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>>
+{
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMapper _mapper;
+
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMediator _mediator;
+
+    /// <summary>
+    ///     $!{Setting.GetName}$!{Table.CamelCaseName}
+    /// </summary>
+    public $!{Setting.GetName}$!{Table.CamelCaseName}()
+    {
+        var context = BaseHttpContext.Context;
+
+        _mediator = context.RequestServices.$!{Setting.GetName}Service(typeof(IMediator)) as IMediator ?? default!;
+        _mapper = context.RequestServices.$!{Setting.GetName}Service(typeof(IMapper)) as IMapper ?? default!;
+    }
+
+    /// <summary>
+    ///     Handle
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<$!{Setting.DataName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>> Handle($!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} request, CancellationToken cancellationToken)
+    {
+        var args = _mapper.Map<$!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>(request);
+
+        var entity = await _mediator.Send(args);
+
+        var dto = _mapper.Map<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>(entity);
+
+        return new $!{Setting.DataName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>(dto);
+        ;
+    }
+}

@@ -1,0 +1,15 @@
+﻿#region
+
+using MediatR;
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}
+/// </summary>
+public class $!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} : $!{Setting.DataSearchPrefix}$!{Setting.DataArgsSuffix}, IRequest<$!{Setting.PageName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>>
+{
+}

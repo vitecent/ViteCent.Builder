@@ -1,0 +1,26 @@
+﻿#region
+
+using MediatR;
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}
+/// </summary>
+public class $!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} : Base$!{Setting.DataArgsSuffix}, IRequest<Base$!{Setting.DataResultSuffix}>
+{
+#set($Index = 0)
+#foreach($Field in $AddFields)
+    /// <summary>
+    ///     $!{Field.Description}
+    /// </summary>
+    public $!{Field.DataType} $!{Field.CamelCaseName} { get; set; }$!{Field.Default}
+#set($Index = $Index + 1)
+#if($Index < $AddFields.Count)
+
+#end
+#end
+}

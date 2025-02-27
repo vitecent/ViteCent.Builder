@@ -1,0 +1,55 @@
+﻿#region
+
+using AutoMapper;
+using MediatR;
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.ApplicationName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.EditName}$!{Table.CamelCaseName}
+/// </summary>
+public class $!{Setting.EditName}$!{Table.CamelCaseName} : IRequestHandler<$!{Setting.EditName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, Base$!{Setting.DataResultSuffix}>
+{
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMapper _mapper;
+
+    /// <summary>
+    ///     _mediator
+    /// </summary>
+    private readonly IMediator _mediator;
+
+    /// <summary>
+    ///     $!{Setting.EditName}$!{Table.CamelCaseName}
+    /// </summary>
+    public $!{Setting.EditName}$!{Table.CamelCaseName}()
+    {
+        var context = BaseHttpContext.Context;
+
+        _mediator = context.RequestServices.$!{Setting.GetName}Service(typeof(IMediator)) as IMediator ?? default!;
+        _mapper = context.RequestServices.$!{Setting.GetName}Service(typeof(IMapper)) as IMapper ?? default!;
+    }
+
+    /// <summary>
+    ///     Handle
+    /// </summary>
+    /// <param name="request"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    public async Task<Base$!{Setting.DataResultSuffix}> Handle($!{Setting.EditName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} request, CancellationToken cancellationToken)
+    {
+        var args = _mapper.Map<$!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>(request);
+
+        var entity = await _mediator.Send(args);
+
+        entity.Updater = "Admin";
+        entity.UpdateTime = DateTime.Now;
+
+        return await _mediator.Send(entity);
+    }
+}

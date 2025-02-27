@@ -1,0 +1,19 @@
+﻿#region
+
+using MediatR;
+using ViteCent.Core.Data;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+
+/// <summary>
+///     $!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}
+/// </summary>
+public class $!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix} : Base$!{Setting.DataArgsSuffix}, IRequest<$!{Setting.DataName}$!{Setting.DataResultSuffix}<$!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>>
+{
+    /// <summary>
+    ///     标识
+    /// </summary>
+    public string Id { get; set; } = string.Empty;
+}

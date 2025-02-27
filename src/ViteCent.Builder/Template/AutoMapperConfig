@@ -1,0 +1,39 @@
+﻿#region
+#foreach($Table in $Tables)
+using $!{DataBase.Name}.$!{Setting.DataName}.$!{Table.CamelCaseName};
+#end
+using $!{DataBase.Name}.$!{Setting.EntityName};
+using ViteCent.Core.Web;
+
+#endregion
+
+namespace $!{DataBase.Name}.$!{Setting.ApiName};
+
+/// <summary>
+///     AutoMapper配置类，继承自BaseMapperConfig
+/// </summary>
+public class $!{Setting.MapperName} : BaseMapperConfig
+{
+    /// <summary>
+    ///     配置映射关系的方法
+    /// </summary>
+    public override void Map()
+    {
+#set($Index = 0)
+#foreach($Table in $Tables)
+        #region $!{Table.CamelCaseName}
+
+        CreateMap<$!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>();
+        CreateMap<$!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Setting.DataSearchPrefix}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>();
+        CreateMap<$!{Setting.AddName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Table.CamelCaseName}$!{Setting.EntityName}>();
+        CreateMap<$!{Table.CamelCaseName}$!{Setting.EntityName}, $!{Table.CamelCaseName}$!{Setting.DataResultSuffix}>();
+        CreateMap<$!{Setting.EditName}$!{Table.CamelCaseName}$!{Setting.DataArgsSuffix}, $!{Setting.GetName}$!{Table.CamelCaseName}$!{Setting.EntityName}$!{Setting.DataArgsSuffix}>();
+
+        #endregion
+#set($Index = $Index + 1)
+#if($Index < $Tables.Count)
+
+#end
+#end
+    }
+}
